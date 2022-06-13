@@ -3,6 +3,7 @@ const {
   addDecoratorsLegacy,
   fixBabelImports,
   // addLessLoader,
+  // useEslintRc,
   addWebpackAlias,
   addWebpackModuleRule,
 } = require("customize-cra");
