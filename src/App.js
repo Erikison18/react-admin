@@ -1,5 +1,5 @@
 import Test from "@pages/test/index.js";
-import './App.css';
+import './App.module.less';
 
 function App() {
   return (

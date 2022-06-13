@@ -37,6 +37,8 @@
   },
   "devDependencies": {
     "customize-cra": "^1.0.0",
+    "less": "3.10.3",
+    "less-loader": "5.0.0",
     "react-app-rewired": "^2.2.1"
   }
 }

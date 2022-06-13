@@ -73,12 +73,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## 自定义配置和文档地址
 react18.1.0(https://react.docschina.org/).
 
-create-react-app5.0.1搭建react18.1.0版本(https://react.docschina.org/).
+create-react-app5.0.1搭建react18.1.0版本(https://www.html.cn/create-react-app/docs/getting-started/).
 
 customize-cra自定义配置方案(https://github.com/arackaf/customize-cra)
 
 
-面向生产的create-react-app的定制化方案(https://www.html.cn/create-react-app/docs/getting-started/)
+面向生产的create-react-app的定制化方案()
 
 CREATE REACT APP无EJECT配置(https://www.freesion.com/article/6281867889/)
 
