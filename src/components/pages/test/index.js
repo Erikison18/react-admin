@@ -1,16 +1,15 @@
-import { Button } from "antd";
-import "./index.less";
+import { Button } from 'antd'
+import './index.less'
 
 function Test() {
-  alert(11);
-  console.log(2345);
+  console.log(2345)
 
   return (
     <div className="test">
-      Test111
+      <h4 className="testCss">testCss</h4>
       <Button type="primary">Button</Button>
     </div>
-  );
+  )
 }
 
-export default Test;
+export default Test

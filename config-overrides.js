@@ -2,6 +2,7 @@ const {
   override,
   addDecoratorsLegacy,
   fixBabelImports,
+  setWebpackPublicPath,
   // addLessLoader,
   // useEslintRc,
   addWebpackAlias,
@@ -11,6 +12,7 @@ const path = require("path");
 
 module.exports = {
   webpack: override(
+    setWebpackPublicPath('/'),
     addDecoratorsLegacy(),
     fixBabelImports("import", {
       libraryName: "antd",
