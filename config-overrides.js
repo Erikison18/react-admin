@@ -1,47 +1,55 @@
 const {
   override,
+  addDecoratorsLegacy,
+  fixBabelImports,
+  // addLessLoader,
   addWebpackAlias,
-  addLessLoader,
-  addPostcssPlugins,
   addWebpackModuleRule,
 } = require("customize-cra");
 const path = require("path");
 
 module.exports = {
   webpack: override(
+    addDecoratorsLegacy(),
+    fixBabelImports("import", {
+      libraryName: "antd",
+      libraryDirectory: "es",
+      style: true,
+    }),
     addWebpackAlias({
       "@": path.resolve(__dirname, "src"),
-      "@pages": path.resolve(__dirname, "src/components/pages"),
+      "@image": path.resolve(__dirname, "src/assets/image"),
+      "@style": path.resolve(__dirname, "src/assets/style"),
+      "@common": path.resolve(__dirname, "src/components/common/"),
+      "@layout": path.resolve(__dirname, "src/components/layout/"),
+      "@pages": path.resolve(__dirname, "src/components/pages/"),
+      "@utils": path.resolve(__dirname, "src/utils/"),
     }),
     addWebpackModuleRule({
-        test: /\.less$/,
-        use: [
-            'style-loader',
-            'css-loader',
-            'less-loader',
-            {
-              loader: 'postcss-loader',
-              options: { 
-                postcssOptions:{ 
-                  plugins: [ require('postcss-preset-env') ] 
-                }
-              }
-            }
-        ]
+      test: /\.less$/,
+      use: [
+        "style-loader",
+        "css-loader",
+        {
+          loader: "postcss-loader",
+          options: {
+            // webpack5.0中postcss添加plugins
+            postcssOptions: {
+              plugins: [require("postcss-preset-env")],
+            },
+          },
+        },
+        {
+          loader: 'less-loader',
+          options: {
+            javascriptEnabled: true,
+            modifyVars: {
+              // '@primary-color': '#1DA57A',
+            },
+            localIdentName: '[local]--[hash:base64:5]',
+          },
+        },
+      ],
     }),
-    addPostcssPlugins(),
-    addLessLoader({
-      lessOptions: {
-        javascriptEnabled: true,
-        // Optionally adjust URLs to be relative. When false, URLs are already relative to the entry less file.
-        relativeUrls: false,
-        modifyVars: { '@primary-color': '#A80000' },
-        // cssModules: {
-        //   // if you use CSS Modules, and custom `localIdentName`, default is '[local]--[hash:base64:5]'.
-        //   localIdentName: "[path][name]__[local]--[hash:base64:5]",
-        // }
-      }
-    })
   ),
-}
-
+};

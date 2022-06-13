@@ -77,8 +77,9 @@ create-react-app5.0.1搭建react18.1.0版本(https://www.html.cn/create-react-ap
 
 customize-cra自定义配置方案(https://github.com/arackaf/customize-cra)
 
+ant.design4.21.0(https://ant.design/components/overview-cn/)
 
-面向生产的create-react-app的定制化方案()
+create-react-app 优雅定制指南(https://juejin.cn/post/6844904016485285901)
 
 CREATE REACT APP无EJECT配置(https://www.freesion.com/article/6281867889/)
 
