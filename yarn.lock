@@ -4505,6 +4505,18 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
+fetch-default@^1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/fetch-default/-/fetch-default-1.0.18.tgz#229e8588c0df9b8942f7e658697dac5cd5e76316"
+  integrity sha512-rfaa2yjMwmr3AKSBuF+3fBeNj8VYvBS42ecmyi3BwxUW8+kQf765J/cTIoBdeEvwVivHdJ3fbX+VzMbE+/tSBg==
+  dependencies:
+    fetch-polyfill "^0.8.2"
+
+fetch-polyfill@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/fetch-polyfill/-/fetch-polyfill-0.8.2.tgz#3e1486442da5b53c43e66a6951eaa0fd5d23f1ac"
+  integrity sha512-HnMXyMscl9drfxTsIgEBOgrEgFH1hq+223eCSQud7blPVhprK1ObBi0TA8KqGa7Ro22nrlwNz2XOtx9uwVXsCg==
+
 file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-6.0.1.tgz"

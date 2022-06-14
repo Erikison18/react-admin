@@ -9,8 +9,8 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:react/jsx-runtime', // 兼容 jsx 新的语法
   ],
+  // parser: 'babel-eslint',
   parserOptions: {
-    //parser: "@babel/eslint-parser",
     requireConfigFile: false,
   },
   rules: {

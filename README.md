@@ -87,4 +87,4 @@ create-react-app 优雅定制指南(https://juejin.cn/post/6844904016485285901)
 
 CREATE REACT APP 无 EJECT 配置(https://www.freesion.com/article/6281867889/)
 
-fetch 封装(https://www.jianshu.com/p/42544b427bfc)
+fetch 封装(https://www.jianshu.com/p/42544b427bfc)(https://www.jianshu.com/p/65b299e3b3d6)

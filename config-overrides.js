@@ -2,43 +2,44 @@ const {
   override,
   addDecoratorsLegacy,
   fixBabelImports,
-  setWebpackPublicPath,
+  // setWebpackPublicPath,
   // addLessLoader,
   // useEslintRc,
   addWebpackAlias,
   addWebpackModuleRule,
-} = require("customize-cra");
-const path = require("path");
+  overrideDevServer,
+} = require('customize-cra')
+const path = require('path')
 
 module.exports = {
   webpack: override(
-    setWebpackPublicPath('/'),
+    // setWebpackPublicPath('/static'),
     addDecoratorsLegacy(),
-    fixBabelImports("import", {
-      libraryName: "antd",
-      libraryDirectory: "es",
+    fixBabelImports('import', {
+      libraryName: 'antd',
+      libraryDirectory: 'es',
       style: true,
     }),
     addWebpackAlias({
-      "@": path.resolve(__dirname, "src"),
-      "@image": path.resolve(__dirname, "src/assets/image"),
-      "@style": path.resolve(__dirname, "src/assets/style"),
-      "@common": path.resolve(__dirname, "src/components/common/"),
-      "@layout": path.resolve(__dirname, "src/components/layout/"),
-      "@pages": path.resolve(__dirname, "src/components/pages/"),
-      "@utils": path.resolve(__dirname, "src/utils/"),
+      '@': path.resolve(__dirname, 'src'),
+      '@image': path.resolve(__dirname, 'src/assets/image'),
+      '@style': path.resolve(__dirname, 'src/assets/style'),
+      '@common': path.resolve(__dirname, 'src/components/common/'),
+      '@layout': path.resolve(__dirname, 'src/components/layout/'),
+      '@pages': path.resolve(__dirname, 'src/components/pages/'),
+      '@utils': path.resolve(__dirname, 'src/utils/'),
     }),
     addWebpackModuleRule({
       test: /\.less$/,
       use: [
-        "style-loader",
-        "css-loader",
+        'style-loader',
+        'css-loader',
         {
-          loader: "postcss-loader",
+          loader: 'postcss-loader',
           options: {
             // webpack5.0中postcss添加plugins
             postcssOptions: {
-              plugins: [require("postcss-preset-env")],
+              plugins: [require('postcss-preset-env')],
             },
           },
         },
@@ -53,6 +54,24 @@ module.exports = {
           },
         },
       ],
-    }),
+    })
   ),
-};
+  devServer: overrideDevServer((config) => {
+    return {
+      ...config,
+      proxy: {
+        '/github': {
+          target: 'https://api.github.com',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/github': '', // remove base path
+          },
+        },
+        '/': {
+          target: 'https://tenapi.cn',
+          changeOrigin: true,
+        },
+      },
+    }
+  }),
+}
