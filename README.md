@@ -85,6 +85,8 @@ prettier(https://www.prettier.cn/docs/options.html)(http://events.jianshu.io/p/1
 
 react-router-dom6(https://www.npmjs.com/package/react-router-dom)(https://github.com/zhengdechang/long-master/blob/main/src/routers/config.js)
 
+webpack-bundle-analyzer(https://www.npmjs.com/package/webpack-bundle-analyzer)
+
 create-react-app 优雅定制指南(https://juejin.cn/post/6844904016485285901)
 
 CREATE REACT APP 无 EJECT 配置(https://www.freesion.com/article/6281867889/)
