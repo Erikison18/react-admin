@@ -67,9 +67,12 @@ module.exports = {
             '^/github': '', // remove base path
           },
         },
-        '/': {
+        '/tenapi': {
           target: 'https://tenapi.cn',
           changeOrigin: true,
+          pathRewrite: {
+            '^/tenapi': '', // remove base path
+          },
         },
       },
     }

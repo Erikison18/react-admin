@@ -83,6 +83,8 @@ eslint(https://eslint.org/docs/rules/)(https://www.jianshu.com/p/1e42e289751e)
 
 prettier(https://www.prettier.cn/docs/options.html)(http://events.jianshu.io/p/18999f6e1668)
 
+react-router-dom6(https://www.npmjs.com/package/react-router-dom)(https://github.com/zhengdechang/long-master/blob/main/src/routers/config.js)
+
 create-react-app 优雅定制指南(https://juejin.cn/post/6844904016485285901)
 
 CREATE REACT APP 无 EJECT 配置(https://www.freesion.com/article/6281867889/)

@@ -1,5 +1,5 @@
-import Test from '@pages/test/index.js'
 import 'fetch-default'
+import Router from './router'
 import { message } from 'antd'
 import './App.less'
 
@@ -15,7 +15,7 @@ fetch.default({
   },
   beforeSend() {},
   async dataFilter(response) {
-    console.log('dataFilter', response)
+    // console.log('dataFilter', response)
     if (response.ok === false) {
       message.error(`${response.status}\n${response.statusText}`)
       return {}
@@ -44,8 +44,7 @@ fetch.default({
 function App() {
   return (
     <div className="App">
-      <header className="App-header">Learn React</header>
-      <Test></Test>
+      <Router />
     </div>
   )
 }

@@ -15,10 +15,10 @@ class Test extends Component {
   }
 
   async componentDidMount() {
-    await fetch(`/comment`).then((res) => {
+    await fetch(`/tenapi/comment`).then((res) => {
       this.setState({ word: res.data.song })
     })
-    console.log(this, 66)
+    // console.log(this, 66)
   }
 
   async getSearchList() {
