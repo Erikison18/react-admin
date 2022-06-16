@@ -15,10 +15,19 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin') // css压缩
 const ProgressBarPlugin = require('progress-bar-webpack-plugin') // 打包进度
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer') // 大文件定位
 const path = require('path')
+const paths = require('react-scripts/config/paths')
+// // 修改打包文件路径为 web 工程的 resources 目录
+paths.appBuild = path.join(path.dirname(paths.appBuild), './mytest')
 const produtionMode = process.env.NODE_ENV === 'production'
 
 module.exports = {
   webpack: override(
+    (config) => {
+      // console.log('config', config)
+      // console.log('module', config.module)
+      // console.log('rules', config.module.rules[0])
+      return config
+    },
     // setWebpackPublicPath('/static'),
     addDecoratorsLegacy(),
     // 注意是production环境启动该plugin
@@ -41,7 +50,13 @@ module.exports = {
           },
         })
       ),
-    addWebpackPlugin(new MiniCssExtractPlugin()),
+    addWebpackPlugin(
+      new MiniCssExtractPlugin({
+        filename:
+          'static/css/[name].[hash]time:' + new Date().valueOf() + '.css',
+        chunkFilename: 'static/css/[id].[hash].css',
+      })
+    ),
     addWebpackPlugin(new ProgressBarPlugin()),
     // 判断环境变量ANALYZER参数的值
     process.env.ANALYZER &&
@@ -66,21 +81,19 @@ module.exports = {
       '@pages': path.resolve(__dirname, 'src/components/pages/'),
       '@utils': path.resolve(__dirname, 'src/utils/'),
     }),
+    // addLessLoader(),
     addWebpackModuleRule({
       test: /\.less$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            publicPath: '../static/css',
-            // publicPath: (resourcePath, context) => {
-            //   return path.relative(path.dirname(resourcePath), context) + '/'
-            // },
-            emit: false,
-            esModule: false,
-          },
-        },
-        // 'style-loader',
+        produtionMode
+          ? {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: './../../',
+                // emit: false,
+              },
+            }
+          : 'style-loader',
         {
           loader: 'css-loader',
           options: {
@@ -101,15 +114,30 @@ module.exports = {
           options: {
             javascriptEnabled: true,
             modifyVars: {
-              // '@primary-color': '#1DA57A',
+              '@primary-color': '#1DA57A',
             },
-            localIdentName: '[local]--[hash:base64:5]',
+            // localIdentName: '[local]--[hash:base64:5]',
           },
         },
       ],
-    })
+    }),
+    (config) => {
+      // console.log('config', config)
+      // console.log('module', config.module)
+      // console.log('rules', config.module.rules[0].oneOf)
+      // for (
+      //   let index = 0;
+      //   index < config.module.rules[0].oneOf.length;
+      //   index++
+      // ) {
+      //   const element = config.module.rules[0].oneOf[index]
+      //   console.log('rules element', element)
+      // }
+      return config
+    }
   ),
   devServer: overrideDevServer((config) => {
+    // console.log('config', config)
     return {
       ...config,
       proxy: {

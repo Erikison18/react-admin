@@ -59,6 +59,6 @@
     "less-loader": "5.0.0",
     "react-app-rewired": "^2.2.1"
   },
-  "homepage": "/build",
-  "publicPath": "/static"
+  "homepage": "./",
+  "appBuild": "mytest"
 }
