@@ -15,6 +15,7 @@ module.exports = {
   },
   rules: {
     // 0 = off, 1 = warn, 2 = error
-    'prettier/prettier': 'error',
+    'prettier/prettier': 2,
+    'react/prop-types': 0,
   },
 }

@@ -1,4 +1,6 @@
 import { Component } from 'react'
+import Count from './count'
+import PersonList from './personList'
 import './index.less'
 
 class About extends Component {
@@ -9,7 +11,15 @@ class About extends Component {
   }
 
   render() {
-    return <div className="about">about</div>
+    return (
+      <div className="about">
+        <h3>about</h3>
+        <hr></hr>
+        <Count></Count>
+        <hr></hr>
+        <PersonList></PersonList>
+      </div>
+    )
   }
 }
 
