@@ -69,6 +69,6 @@ class Count extends Component {
 }
 
 export default connect(
-  ({ count, personList }) => ({ count, personList }),
+  ({ count, personList }) => ({ count, ...personList }),
   (dispatch) => bindActionCreators(actiontor, dispatch)
 )(Count)

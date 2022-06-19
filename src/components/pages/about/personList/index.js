@@ -11,16 +11,28 @@ class PersonList extends Component {
     this.state = { loading: false }
     this.addPerson = this.addPerson.bind(this)
     this.addPersonServer = this.addPersonServer.bind(this)
+    this.getWether = this.getWether.bind(this)
   }
 
   addPerson() {
     this.props.addPerson({ id: new Date().valueOf(), name: this.name.value })
   }
-  addPersonServer() {}
+  async addPersonServer() {
+    this.setState({ loading: true })
+    await this.props.addPersonServer({ id: this.name.value })
+    this.setState({ loading: false })
+  }
+  async getWether() {
+    console.log(this)
+    this.setState({ loading: true })
+    await this.props.getWether()
+    this.setState({ loading: false })
+    console.log(this)
+  }
 
   render() {
     let { loading } = this.state
-    let { personList, count } = this.props
+    let { personList, count, getWetherData } = this.props
     return (
       <div className="personList">
         <h1>list组件--人员列表</h1>
@@ -34,7 +46,7 @@ class PersonList extends Component {
           添加
         </Button>
         <Button type="primary" onClick={this.addPersonServer} loading={loading}>
-          随机添加
+          api随机添加
         </Button>
         <ul>
           {personList.map((item) => {
@@ -45,12 +57,19 @@ class PersonList extends Component {
             )
           })}
         </ul>
+        <Button type="primary" onClick={this.getWether} loading={loading}>
+          api获取wether
+        </Button>
+        <h6>天气：{getWetherData.ganmao}</h6>
       </div>
     )
   }
 }
 
 export default connect(
-  ({ personList, count }) => ({ personList, count }),
+  ({ personList, count }) => ({
+    ...personList,
+    count,
+  }),
   (dispatch) => bindActionCreators(actiontor, dispatch)
 )(PersonList)
