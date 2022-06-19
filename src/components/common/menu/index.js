@@ -1,6 +1,7 @@
 import { Menu } from 'antd'
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import './index.less'
 const items = [
   {
@@ -16,24 +17,28 @@ const items = [
 ]
 
 const MenuAntd = () => {
+  const { doLoginData } = useSelector((state) => state.login)
   const location = useLocation()
   const { pathname } = location
   const navigate = useNavigate()
   const [current, setCurrent] = useState(pathname)
 
   const onClick = (e) => {
-    // console.log('click ', e)
+    console.log('click ', e, doLoginData)
     setCurrent(e.key)
     navigate(e.key)
   }
 
   return (
-    <Menu
-      onClick={onClick}
-      selectedKeys={[current]}
-      mode="horizontal"
-      items={items}
-    />
+    <div className="common-menu">
+      <Menu
+        onClick={onClick}
+        selectedKeys={[current]}
+        mode="horizontal"
+        items={items}
+      />
+      <span className="username">{doLoginData.name}</span>
+    </div>
   )
 }
 

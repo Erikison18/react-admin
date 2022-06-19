@@ -23,11 +23,9 @@ class PersonList extends Component {
     this.setState({ loading: false })
   }
   async getWether() {
-    console.log(this)
     this.setState({ loading: true })
     await this.props.getWether()
     this.setState({ loading: false })
-    console.log(this)
   }
 
   render() {

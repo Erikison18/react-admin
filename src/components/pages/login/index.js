@@ -1,7 +1,11 @@
 import { Button, Checkbox, Form, Input } from 'antd'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import './index.less'
+let {
+  actiontor: { doLogin },
+} = require('@models/login')
 const layout = {
   labelCol: {
     span: 8,
@@ -12,8 +16,17 @@ const layout = {
 }
 
 const Login = () => {
+  const { doLoginData } = useSelector((state) => {
+    // console.log(state)
+    return state.login
+  })
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
   const [form] = Form.useForm()
+
+  useEffect(() => {
+    // console.log('123--useEffect', doLoginData)
+  })
   // const [values, setValues] = useState({
   //   username: '',
   //   password: '',
@@ -43,10 +56,13 @@ const Login = () => {
 
   const getSearchList = async (values) => {
     setLoading(true)
-    await fetch(`/tenapi/bilibili/?uid=${values.username}`).then((res) => {
-      console.log(res)
+    let { code, data } = await fetch(`/tenapi/bilibili/?uid=${values.username}`)
+    if (code === 200) {
+      dispatch(doLogin(data))
       navigate('/userLayout/test')
-    })
+    } else {
+      dispatch(doLogin({}))
+    }
     setLoading(false)
   }
 
@@ -118,6 +134,7 @@ const Login = () => {
           </Button>
         </Form.Item>
       </Form>
+      <h5>登陆的名称是：{doLoginData.name}</h5>
     </div>
   )
 }

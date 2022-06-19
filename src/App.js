@@ -1,6 +1,7 @@
 import 'fetch-default'
 import { Provider } from 'react-redux'
-import store from './redux/store'
+import { store, persistor } from './redux/store'
+import { PersistGate } from 'redux-persist/lib/integration/react'
 import Router from './router'
 import { message } from 'antd'
 import './App.less'
@@ -64,9 +65,11 @@ fetch.default({
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <Router />
-      </div>
+      <PersistGate loading={null} persistor={persistor}>
+        <div className="App">
+          <Router />
+        </div>
+      </PersistGate>
     </Provider>
   )
 }

@@ -21,7 +21,7 @@ class Count extends Component {
   }
 
   componentDidMount() {
-    console.log(this)
+    // console.log(this)
   }
 
   handleChange(value) {

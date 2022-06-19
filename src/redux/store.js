@@ -6,9 +6,21 @@ import filterActionType from './middleware/filterActionType'
 import promiseMiddleware from 'redux-promise-middleware'
 import { promiseTypeSuffixes, promiseTypeDelimiter } from './config'
 import reducers from './models'
+import { persistStore, persistReducer } from 'redux-persist'
+//导入需要配置的数据源，可以选择，storage，cookie，session等
+import storage from 'redux-persist/lib/storage'
+
+//定义配置的信息
+const persitConfig = {
+  key: 'root',
+  storage: storage,
+  whitelist: ['login'],
+}
+//创建持久化的配置persist的信息
+const persist_reducers = persistReducer(persitConfig, reducers)
 
 const store = createStore(
-  reducers,
+  persist_reducers,
   applyMiddleware(
     thunk,
     promiseMiddleware({
@@ -18,5 +30,6 @@ const store = createStore(
     filterActionType()
   )
 )
+const persistor = persistStore(store) //使用persistStore包裹一下
 
-export default store
+export { store, persistor }
