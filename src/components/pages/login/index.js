@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import './index.less'
 let {
-  actiontor: { doLogin },
+  actiontor: { setUserInfo, setLoginFlag },
 } = require('@models/login')
 const layout = {
   labelCol: {
@@ -16,8 +16,8 @@ const layout = {
 }
 
 const Login = () => {
-  const { doLoginData } = useSelector((state) => {
-    // console.log(state)
+  const { userInfo } = useSelector((state) => {
+    console.log(state)
     return state.login
   })
   const dispatch = useDispatch()
@@ -25,7 +25,7 @@ const Login = () => {
   const [form] = Form.useForm()
 
   useEffect(() => {
-    // console.log('123--useEffect', doLoginData)
+    // console.log('123--useEffect', userInfo)
   })
   // const [values, setValues] = useState({
   //   username: '',
@@ -58,10 +58,12 @@ const Login = () => {
     setLoading(true)
     let { code, data } = await fetch(`/tenapi/bilibili/?uid=${values.username}`)
     if (code === 200) {
-      dispatch(doLogin(data))
+      dispatch(setUserInfo(data))
+      dispatch(setLoginFlag(true))
       navigate('/userLayout/test')
     } else {
-      dispatch(doLogin({}))
+      dispatch(setUserInfo({}))
+      dispatch(setLoginFlag(false))
     }
     setLoading(false)
   }
@@ -134,7 +136,7 @@ const Login = () => {
           </Button>
         </Form.Item>
       </Form>
-      <h5>登陆的名称是：{doLoginData.name}</h5>
+      <h5>登陆的名称是：{userInfo.name}</h5>
     </div>
   )
 }

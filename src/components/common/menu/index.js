@@ -17,14 +17,14 @@ const items = [
 ]
 
 const MenuAntd = () => {
-  const { doLoginData } = useSelector((state) => state.login)
+  const { userInfo } = useSelector((state) => state.login)
   const location = useLocation()
   const { pathname } = location
   const navigate = useNavigate()
   const [current, setCurrent] = useState(pathname)
 
   const onClick = (e) => {
-    console.log('click ', e, doLoginData)
+    console.log('click ', e, userInfo)
     setCurrent(e.key)
     navigate(e.key)
   }
@@ -37,7 +37,7 @@ const MenuAntd = () => {
         mode="horizontal"
         items={items}
       />
-      <span className="username">{doLoginData.name}</span>
+      <span className="username">{userInfo.name}</span>
     </div>
   )
 }

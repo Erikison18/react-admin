@@ -18,7 +18,7 @@ import { createActions, handleActions as createReducer } from 'redux-actions'
 //     }
 //   },
 // }
-// createActions创建action
+// createActions创建action 注意action type不要和其他模块命名冲突
 export const actiontor = createActions({
   addPerson(data) {
     return data

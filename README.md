@@ -85,6 +85,10 @@ prettier(https://www.prettier.cn/docs/options.html)(http://events.jianshu.io/p/1
 
 react-router-dom6(https://www.npmjs.com/package/react-router-dom)(https://github.com/zhengdechang/long-master/blob/main/src/routers/config.js)
 
+redux-actions(https://www.npmjs.com/package/redux-actions)
+
+redux-persist(https://www.npmjs.com/package/redux-persist)
+
 webpack-bundle-analyzer(https://www.npmjs.com/package/webpack-bundle-analyzer)
 
 create-react-app 优雅定制指南(https://juejin.cn/post/6844904016485285901)
@@ -92,3 +96,5 @@ create-react-app 优雅定制指南(https://juejin.cn/post/6844904016485285901)
 CREATE REACT APP 无 EJECT 配置(https://www.freesion.com/article/6281867889/)
 
 fetch 封装(https://www.jianshu.com/p/42544b427bfc)(https://www.jianshu.com/p/65b299e3b3d6)
+
+CatchErrorBoundary 错误边界捕获(https://www.jianshu.com/p/34c40cb3e265)
