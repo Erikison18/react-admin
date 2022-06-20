@@ -17,7 +17,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer') // 大文件
 const path = require('path')
 const paths = require('react-scripts/config/paths')
 // // 修改打包文件路径为 web 工程的 resources 目录
-paths.appBuild = path.join(path.dirname(paths.appBuild), './mytest')
+paths.appBuild = path.join(path.dirname(paths.appBuild), './build')
 const produtionMode = process.env.NODE_ENV === 'production'
 
 module.exports = {

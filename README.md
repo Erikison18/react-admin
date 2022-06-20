@@ -1,73 +1,49 @@
-# Getting Started with Create React App
+## 安装
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `npm install`
 
-## Available Scripts
+### `yarn`
 
-In the project directory, you can run:
+## 开发环境启动
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `yarn start`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 生产环境打包
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `yarn build`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 打包文件分析
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm run analyze`
 
-### `npm run eject`
+### `yarn analyze`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 目录
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+├── public // index.html \
+├── src // 业务相关 源码目录 \
+│ ├── assets // 静态文件(css, images) \
+│ ├── components // 全部组件 \
+│ │ ├── common // 公用组件 \
+│ │ ├── layout // 基础布局 \
+│ │ └── pages // 页面 \
+│ ├── redux // redux 状态管理 \
+│ ├── router // 路由 \
+│ ├── utils // 工具文件 \
+│ ├── App.js // 入口文件 \
+│ └── index.js // 项目的核心文件，入口 \
+├── .eslintrc.js // eslint 检查配置 \
+├── .gitignore // git 忽略配置 \
+├── .prettierrc // prettier 代码风格检查配置 \
+├── config-overrides.js // customize-cra 无 eject 暴露 配置 webpack \
+├── package-lock.json // 项目包管控文件 存放缓存数据\
+├── package.json // 项目信息及依赖的配置 \
+├── README.md // 项目说明书 \
+└── yarn.lock // 项目包 yarn 管控文件 \
 
 ## 自定义配置和文档地址
 
